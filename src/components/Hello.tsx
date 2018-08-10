@@ -1,15 +1,15 @@
-import {Component, default as React} from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
+import { Component, default as React } from 'react';
+import { Button, StyleSheet, Text, View } from 'react-native';
 
 export interface IProps {
-  name: string
-  enthusiasmLevel?: number
-  onIncrement?: () => void
-  onDecrement?: () => void
+  name: string;
+  enthusiasmLevel?: number;
+  onIncrement?: () => void;
+  onDecrement?: () => void;
 }
 
 interface IState {
-  enthusiasmLevel: number
+  enthusiasmLevel: number;
 }
 
 export class Hello extends Component<IProps, IState> {
@@ -21,19 +21,23 @@ export class Hello extends Component<IProps, IState> {
     }
 
     this.state = {
-      enthusiasmLevel: props.enthusiasmLevel || 1
+      enthusiasmLevel: props.enthusiasmLevel || 1,
     };
   }
 
-  onIncrement = () => this.setState({enthusiasmLevel: this.state.enthusiasmLevel + 1});
-  onDecrement = () => this.setState({enthusiasmLevel: this.state.enthusiasmLevel - 1});
+  onIncrement = () =>
+    this.setState({ enthusiasmLevel: this.state.enthusiasmLevel + 1 });
+  onDecrement = () =>
+    this.setState({ enthusiasmLevel: this.state.enthusiasmLevel - 1 });
   getExclamationMarks = (numChars: number) => Array(numChars + 1).join('!');
 
   render() {
     return (
       <View style={styles.root}>
         <Text style={styles.greeting}>
-          Hello {this.props.name + this.getExclamationMarks(this.state.enthusiasmLevel)}
+          Hello{' '}
+          {this.props.name +
+            this.getExclamationMarks(this.state.enthusiasmLevel)}
         </Text>
 
         <View style={styles.buttons}>

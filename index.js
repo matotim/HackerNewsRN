@@ -3,14 +3,25 @@
 import App from './src/App';
 import { Navigation } from 'react-native-navigation';
 
-Navigation.registerComponent(`navigation.playground.WelcomeScreen`, () => App);
+Navigation.registerComponent('navigation.playground.App', () => App);
 
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
     root: {
-      component: {
-        name: "navigation.playground.WelcomeScreen"
-      }
+      bottomTabs: {
+        children: [
+          {
+            component: {
+              name: 'navigation.playground.App',
+              options: {
+                bottomTab: {
+                  text: 'Stories',
+                }
+              }
+            },
+          }
+        ],
+      },
     }
   });
 });
