@@ -7,7 +7,12 @@
   ],
   "jsRules": {},
   "rules": {
-    "semicolon": [true, "always"]
+    "no-any": true,
+    "semicolon": [true, "always", "ignore-interfaces"],
+    "trailing-comma": [true, {"multiline": "always", "singleline": "never"}],
+    "quotemark": [true, "single", "jsx-double"],
+    "member-access": [true, "no-public"],
+    "object-literal-sort-keys": false
   },
   "rulesDirectory": []
 }

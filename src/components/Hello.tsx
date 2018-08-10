@@ -1,33 +1,33 @@
-import { default as React, Component } from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native'
+import {Component, default as React} from 'react';
+import {Button, StyleSheet, Text, View} from 'react-native';
 
-export interface Props {
+export interface IProps {
   name: string
   enthusiasmLevel?: number
   onIncrement?: () => void
   onDecrement?: () => void
 }
 
-interface State {
+interface IState {
   enthusiasmLevel: number
 }
 
-export class Hello extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props)
+export class Hello extends Component<IProps, IState> {
+  constructor(props: IProps) {
+    super(props);
 
     if ((props.enthusiasmLevel || 0) <= 0) {
-      throw new Error("You could be a little more enthusiastic. :D")
+      throw new Error('You could be a little more enthusiastic. :D');
     }
 
     this.state = {
       enthusiasmLevel: props.enthusiasmLevel || 1
-    }
+    };
   }
 
-  onIncrement = () => this.setState({ enthusiasmLevel: this.state.enthusiasmLevel + 1 });
-  onDecrement = () => this.setState({ enthusiasmLevel: this.state.enthusiasmLevel - 1 });
-  getExclamationMarks = (numChars: number) => Array(numChars + 1).join("!")
+  onIncrement = () => this.setState({enthusiasmLevel: this.state.enthusiasmLevel + 1});
+  onDecrement = () => this.setState({enthusiasmLevel: this.state.enthusiasmLevel - 1});
+  getExclamationMarks = (numChars: number) => Array(numChars + 1).join('!');
 
   render() {
     return (
@@ -56,7 +56,7 @@ export class Hello extends Component<Props, State> {
           </View>
         </View>
       </View>
-    )
+    );
   }
 }
 
@@ -64,22 +64,22 @@ export class Hello extends Component<Props, State> {
 
 const styles = StyleSheet.create({
   root: {
-    alignItems: "center",
-    alignSelf: "center"
+    alignItems: 'center',
+    alignSelf: 'center',
   },
   buttons: {
-    flexDirection: "row",
+    flexDirection: 'row',
     minHeight: 70,
-    alignItems: "stretch",
-    alignSelf: "center",
-    borderWidth: 5
+    alignItems: 'stretch',
+    alignSelf: 'center',
+    borderWidth: 5,
   },
   button: {
     flex: 1,
-    paddingVertical: 0
+    paddingVertical: 0,
   },
   greeting: {
-    color: "#999",
-    fontWeight: "bold"
-  }
-})
+    color: '#999',
+    fontWeight: 'bold',
+  },
+});

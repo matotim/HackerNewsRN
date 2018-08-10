@@ -5,13 +5,12 @@
  * @format
  */
 
-import { default as React, Component } from 'react';
+import { Component, default as React } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { Hello } from './components/Hello';
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
