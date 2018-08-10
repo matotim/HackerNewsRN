@@ -1,5 +1,5 @@
-import React from "react"
-import { Button, StyleSheet, Text, View } from "react-native"
+import { default as React, Component } from 'react';
+import { Button, StyleSheet, Text, View } from 'react-native'
 
 export interface Props {
   name: string
@@ -12,7 +12,7 @@ interface State {
   enthusiasmLevel: number
 }
 
-export class Hello extends React.Component<Props, State> {
+export class Hello extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
 

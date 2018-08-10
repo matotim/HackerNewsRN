@@ -5,7 +5,7 @@
  * @format
  */
 
-import React, { Component } from 'react';
+import { default as React, Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { Hello } from './components/Hello';
