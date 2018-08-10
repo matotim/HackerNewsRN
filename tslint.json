@@ -2,12 +2,12 @@
   "defaultSeverity": "error",
   "extends": [
     "tslint:recommended",
-    "tslint-config-airbnb"
+    "tslint-config-prettier"
   ],
   "jsRules": {},
   "rules": {
     "no-any": true,
-    "semicolon": [true, "always"],
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
     "trailing-comma": [true, {"multiline": "always", "singleline": "never"}],
     "quotemark": [true, "single", "jsx-double"],
     "member-access": [true, "no-public"],
