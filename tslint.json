@@ -6,7 +6,6 @@
   ],
   "jsRules": {},
   "rules": {
-    "no-any": true,
     "semicolon": [true, "always", "ignore-bound-class-methods"],
     "trailing-comma": [true, {"multiline": "always", "singleline": "never"}],
     "quotemark": [true, "single", "jsx-double"],
