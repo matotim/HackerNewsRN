@@ -11,7 +11,8 @@
     "quotemark": [true, "single", "jsx-double"],
     "member-access": [true, "no-public"],
     "object-literal-sort-keys": false,
-    "whitespace": [true, "check-branch", "check-module"]
+    "whitespace": [true, "check-branch", "check-module"],
+    "interface-name": false
   },
   "rulesDirectory": []
 }

@@ -1,18 +1,19 @@
 import axios from 'axios';
 import { AnyAction, Dispatch } from 'redux';
+import { ActionPayload } from '../../interfaces/stores';
 import * as storiesActionTypes from './storiesActions.types';
 
-export function fetchTopStoriesSuccess(data: any): AnyAction {
+export function fetchTopStoriesSuccess(data: any): ActionPayload {
   return {
     type: storiesActionTypes.FETCH_TOP_STORIES_SUCCESS,
-    data,
+    payload: data,
   };
 }
 
 export function fetchTopStoriesFailure(error: any): AnyAction {
   return {
     type: storiesActionTypes.FETCH_TOP_STORIES_FAILURE,
-    error,
+    payload: error,
   };
 }
 
