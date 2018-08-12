@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AnyAction, Dispatch } from 'redux';
+import { Dispatch } from 'redux';
 import { ActionPayload } from '../../interfaces/stores';
 import * as storiesActionTypes from './storiesActions.types';
 
@@ -10,7 +10,7 @@ export function fetchTopStoriesSuccess(data: any): ActionPayload {
   };
 }
 
-export function fetchTopStoriesFailure(error: any): AnyAction {
+export function fetchTopStoriesFailure(error: any): ActionPayload {
   return {
     type: storiesActionTypes.FETCH_TOP_STORIES_FAILURE,
     payload: error,
