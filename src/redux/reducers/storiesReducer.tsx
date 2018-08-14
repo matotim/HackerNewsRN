@@ -1,4 +1,8 @@
-import { ActionPayload, StoriesState } from '../../interfaces/stores';
+import {
+  ActionStory,
+  StoriesState,
+  StoryCategory,
+} from '../../interfaces/stores';
 import { storiesActionTypes } from '../actions';
 
 const initialState: StoriesState = {
@@ -7,18 +11,22 @@ const initialState: StoriesState = {
   stories: null,
 };
 
-export default function(
-  state: StoriesState = initialState,
-  action: ActionPayload,
-): StoriesState {
-  switch (action.type) {
-    case storiesActionTypes.FETCH_TOP_STORIES:
-      return { ...state, isFetching: true };
-    case storiesActionTypes.FETCH_TOP_STORIES_SUCCESS:
-      return { ...state, isFetching: false, stories: action.payload };
-    case storiesActionTypes.FETCH_TOP_STORIES_FAILURE:
-      return { ...state, isFetching: false, error: action.payload };
-    default:
-      return state;
-  }
+function categoryReducer(category: StoryCategory) {
+  return (
+    state: StoriesState = initialState,
+    action: ActionStory,
+  ): StoriesState => {
+    switch (action.type) {
+      case storiesActionTypes.FETCH_STORIES:
+        return { ...state, isFetching: true };
+      case storiesActionTypes.FETCH_STORIES_SUCCESS:
+        return { ...state, isFetching: false, stories: action.payload };
+      case storiesActionTypes.FETCH_STORIES_FAILURE:
+        return { ...state, isFetching: false, error: action.payload };
+      default:
+        return state;
+    }
+  };
 }
+
+export const TopStoriesReducer = categoryReducer(StoryCategory.TOP_STORES);

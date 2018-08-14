@@ -1,10 +1,22 @@
+import { Action } from 'redux';
+
 export interface StoriesState {
   isFetching: boolean;
   error: object | null;
   stories: object | null;
 }
 
-export interface ActionPayload<T = any> {
+export interface ActionPayload<T = any> extends Action {
   type: string;
   payload: T;
+}
+
+export interface ActionStory extends ActionPayload {
+  category: StoryCategory;
+}
+
+export enum StoryCategory {
+  TOP_STORES = 'topstories',
+  BEST_STORIES = 'beststories',
+  NEW_STORIES = 'newstories',
 }

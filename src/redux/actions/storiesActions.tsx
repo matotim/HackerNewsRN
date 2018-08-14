@@ -1,31 +1,42 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { ActionPayload } from '../../interfaces/stores';
+import { ActionStory, StoryCategory } from '../../interfaces/stores';
 import * as storiesActionTypes from './storiesActions.types';
 
-export function fetchTopStoriesSuccess(data: any): ActionPayload {
+export function fetchStoriesSuccess(
+  data: any,
+  category: StoryCategory,
+): ActionStory {
   return {
-    type: storiesActionTypes.FETCH_TOP_STORIES_SUCCESS,
+    type: storiesActionTypes.FETCH_STORIES_SUCCESS,
     payload: data,
+    category,
   };
 }
 
-export function fetchTopStoriesFailure(error: any): ActionPayload {
+export function fetchStoriesFailure(
+  error: any,
+  category: StoryCategory,
+): ActionStory {
   return {
-    type: storiesActionTypes.FETCH_TOP_STORIES_FAILURE,
+    type: storiesActionTypes.FETCH_STORIES_FAILURE,
     payload: error,
+    category,
   };
 }
 
-export function fetchTopStories(): (dispatch: Dispatch) => void {
+export function fetchStories(
+  category: StoryCategory,
+): (dispatch: Dispatch) => void {
   return (dispatch: Dispatch) => {
-    dispatch({ type: storiesActionTypes.FETCH_TOP_STORIES });
-    return axios.get('http://www.google.fr')
+    dispatch({ type: storiesActionTypes.FETCH_STORIES });
+    return axios
+      .get('http://www.google.fr')
       .then(response => {
-        dispatch(fetchTopStoriesSuccess(response.data));
+        dispatch(fetchStoriesSuccess(response.data, category));
       })
       .catch(error => {
-        dispatch(fetchTopStoriesFailure(error));
+        dispatch(fetchStoriesFailure(error, category));
       });
   };
 }
