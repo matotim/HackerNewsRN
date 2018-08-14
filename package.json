@@ -13,6 +13,7 @@
     "axios": "^0.18.0",
     "react": "16.4.1",
     "react-native": "0.56.0",
+    "react-native-config": "^0.11.5",
     "react-native-navigation": "^2.0.2464",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
