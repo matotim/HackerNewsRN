@@ -10,6 +10,7 @@
     "ios": "react-native run-ios"
   },
   "dependencies": {
+    "@types/react-redux": "^6.0.6",
     "axios": "^0.18.0",
     "react": "16.4.1",
     "react-native": "0.56.0",

@@ -1,6 +1,14 @@
 import { combineReducers } from 'redux';
-import { TopStoriesReducer } from './storiesReducer';
+import {
+  TopStoriesReducer,
+  BestStoriesReducer,
+  NewStoriesReducer,
+} from './storiesReducer';
 
-const rootReducer = combineReducers(TopStoriesReducer);
+const rootReducer = combineReducers({
+  TopStoriesReducer,
+  BestStoriesReducer,
+  NewStoriesReducer,
+});
 
 export default rootReducer;

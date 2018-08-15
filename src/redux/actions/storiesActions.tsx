@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Config from 'react-native-config';
 import { Dispatch } from 'redux';
 import { ActionStory, StoryCategory } from '../../interfaces/stores';
 import * as storiesActionTypes from './storiesActions.types';
@@ -31,7 +32,7 @@ export function fetchStories(
   return (dispatch: Dispatch) => {
     dispatch({ type: storiesActionTypes.FETCH_STORIES });
     return axios
-      .get('http://www.google.fr')
+      .get(Config.API_URL)
       .then(response => {
         dispatch(fetchStoriesSuccess(response.data, category));
       })

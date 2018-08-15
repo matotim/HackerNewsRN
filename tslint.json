@@ -12,7 +12,9 @@
     "member-access": [true, "no-public"],
     "object-literal-sort-keys": false,
     "whitespace": [true, "check-branch", "check-module"],
-    "interface-name": false
+    "interface-name": false,
+    "ordered-imports": false,
+    "max-line-length": [true, 120]
   },
   "rulesDirectory": []
 }
