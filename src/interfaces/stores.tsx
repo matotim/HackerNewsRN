@@ -1,5 +1,11 @@
 import { Action } from 'redux';
 
+export interface RootState {
+  topstories: StoriesState;
+  beststories: StoriesState;
+  newstories: StoriesState;
+}
+
 export interface StoriesState {
   isFetching: boolean;
   error: object | null;

@@ -6,9 +6,9 @@ import {
 } from './storiesReducer';
 
 const rootReducer = combineReducers({
-  TopStoriesReducer,
-  BestStoriesReducer,
-  NewStoriesReducer,
+  topstories: TopStoriesReducer,
+  beststories: BestStoriesReducer,
+  newstories: NewStoriesReducer,
 });
 
 export default rootReducer;

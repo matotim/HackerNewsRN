@@ -16,6 +16,9 @@ function categoryReducer(category: StoryCategory) {
     state: StoriesState = initialState,
     action: ActionStory,
   ): StoriesState => {
+    if (action.category !== category) {
+      return state;
+    }
     switch (action.type) {
       case storiesActionTypes.FETCH_STORIES:
         return { ...state, isFetching: true };
