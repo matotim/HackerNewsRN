@@ -10,12 +10,13 @@
     "ios": "react-native run-ios"
   },
   "dependencies": {
+    "@types/react-navigation": "^2.0.22",
     "@types/react-redux": "^6.0.6",
     "axios": "^0.18.0",
     "react": "16.4.1",
     "react-native": "0.56.0",
     "react-native-config": "^0.11.5",
-    "react-native-navigation": "^2.0.2464",
+    "react-navigation": "^2.17.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0"

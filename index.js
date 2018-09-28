@@ -1,4 +1,4 @@
-import { registerScreens, startApp } from './src/screens';
+import { AppRegistry } from 'react-native';
+import App from './App';
 
-registerScreens();
-startApp();
+AppRegistry.registerComponent('HackerNewsRN', () => App);
