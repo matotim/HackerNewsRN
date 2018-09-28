@@ -11,7 +11,7 @@ class StoriesScreen extends Component<Props> {
   render() {
     return (
       <View>
-        <Text>{this.props.category}</Text>
+        <Text>coucou</Text>
       </View>
     );
   }
