@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
 export interface IProps {
@@ -12,7 +12,7 @@ interface IState {
   enthusiasmLevel: number;
 }
 
-export class Hello extends Component<IProps, IState> {
+export class Hello extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
 

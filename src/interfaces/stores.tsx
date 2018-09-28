@@ -16,7 +16,7 @@ export interface ActionStory extends ActionPayload {
 }
 
 export enum StoryCategory {
-  TOP_STORES = 'topstories',
+  TOP_STORIES = 'topstories',
   BEST_STORIES = 'beststories',
   NEW_STORIES = 'newstories',
 }

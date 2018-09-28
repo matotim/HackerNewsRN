@@ -29,6 +29,6 @@ function categoryReducer(category: StoryCategory) {
   };
 }
 
-export const TopStoriesReducer = categoryReducer(StoryCategory.TOP_STORES);
+export const TopStoriesReducer = categoryReducer(StoryCategory.TOP_STORIES);
 export const BestStoriesReducer = categoryReducer(StoryCategory.BEST_STORIES);
 export const NewStoriesReducer = categoryReducer(StoryCategory.NEW_STORIES);
