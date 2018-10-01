@@ -9,6 +9,7 @@ const initialState: StoriesState = {
   isFetching: false,
   error: null,
   stories: null,
+  ids: null,
 };
 
 function categoryReducer(category: StoryCategory) {
@@ -22,6 +23,8 @@ function categoryReducer(category: StoryCategory) {
     switch (action.type) {
       case storiesActionTypes.FETCH_STORIES:
         return { ...state, isFetching: true };
+      case storiesActionTypes.FETCH_STORIES_IDS_SUCCESS:
+        return { ...state, isFetching: true, ids: action.payload };
       case storiesActionTypes.FETCH_STORIES_SUCCESS:
         return { ...state, isFetching: false, stories: action.payload };
       case storiesActionTypes.FETCH_STORIES_FAILURE:

@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ActivityIndicator, FlatList } from 'react-native';
 import { RootState, StoryCategory } from '../interfaces/stores';
-import { fetchStories } from '../redux/actions/storiesActions';
+import { fetchStories, fetchStoriesIds } from '../redux/actions/storiesActions';
 import { connect } from 'react-redux';
 
 interface Props {
@@ -9,19 +9,38 @@ interface Props {
   isFetching: boolean;
   error: any;
   stories: any;
-  fetchStories: () => void;
+  ids: string[];
+  fetchStoriesIds: () => void;
+  fetchStories: (ids: string[]) => void;
 }
 
 export class StoryList extends React.Component<Props> {
   componentDidMount() {
-    this.props.fetchStories();
+    this.props.fetchStoriesIds();
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    if (!prevProps.ids && this.props.ids) {
+      const ids = this.props.ids.slice(0, 20);
+      this.props.fetchStories(ids);
+    }
+  }
+
+  renderItem = (data: any) => {
+    return (
+      <Text>{data.item.title}</Text>
+    );
+  };
+
+  renderList() {
+    return <FlatList data={this.props.stories} renderItem={this.renderItem} />;
   }
 
   renderContent() {
     if (this.props.isFetching) {
-      return <Text>IsLoading</Text>;
+      return <ActivityIndicator size="large" />;
     } else if (this.props.stories) {
-      return <Text>StoriesIds !</Text>;
+      return this.renderList();
     } else if (this.props.error) {
       return <Text>Error</Text>;
     } else {
@@ -43,7 +62,8 @@ const mapStateToProps = (state: RootState, ownProps: Props) => {
 };
 
 const mapDispatchToProps = (dispatch: any, ownProps: Props) => ({
-  fetchStories: () => dispatch(fetchStories(ownProps.storyCategory)),
+  fetchStoriesIds: () => dispatch(fetchStoriesIds(ownProps.storyCategory)),
+  fetchStories: (ids: string[]) => dispatch(fetchStories(ids, ownProps.storyCategory)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(StoryList);
