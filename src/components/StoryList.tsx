@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, Text, ActivityIndicator, FlatList, StyleSheet } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { connect } from 'react-redux';
 import url from 'url';
 
 import { RootState, StoryCategory } from '../interfaces/stores';
 import { fetchStories, fetchStoriesIds } from '../redux/actions/storiesActions';
-import { connect } from 'react-redux';
+import { timeSince } from '../utils/dateHelper';
 
 interface StateProps {
   storyCategory: StoryCategory;
@@ -65,8 +66,10 @@ export class StoryList extends React.Component<Props, State> {
       urlHostname = url.parse(data.item.url).hostname;
       urlHostname = urlHostname.startsWith('www.') ? urlHostname.substring(4) : urlHostname;
     }
+    const date = new Date(data.item.time * 1000);
     return (
       <View style={styles.listItem}>
+        <Text style={styles.date}>{`${timeSince(date)} ago by ${data.item.by}` }</Text>
         <Text style={styles.title}>{data.item.title}</Text>
         {urlHostname && <Text style={styles.url}>{`(${urlHostname})`}</Text>}
         <View style={styles.bottomRow}>
@@ -105,7 +108,7 @@ export class StoryList extends React.Component<Props, State> {
         renderItem={this.renderItem}
         refreshing={this.props.isFetching}
         onEndReached={this.loadMoreStories}
-        onEndReachedThreshold={0.25}
+        onEndReachedThreshold={1}
         ListFooterComponent={this.renderFooterList}
       />
     );
@@ -160,9 +163,13 @@ const styles = StyleSheet.create({
   activityIndicator: {
     padding: 10,
   },
+  date: {
+    fontSize: 11,
+  },
   title: {
     fontWeight: '500',
     fontSize: 15,
+    marginTop: 5,
   },
   url: {
     fontWeight: '500',
@@ -174,11 +181,11 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     marginTop: 10,
-    justifyContent: 'space-around',
   },
   bottomItem: {
+    flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
+    justifyContent: 'center',
   },
   bottomText: {
     color : '#b0afb3',
