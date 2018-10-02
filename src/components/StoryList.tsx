@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ActivityIndicator, FlatList, StyleSheet } from 'react-native';
+import { View, Text, ActivityIndicator, FlatList, StyleSheet, Platform } from 'react-native';
 import { RootState, StoryCategory } from '../interfaces/stores';
 import { fetchStories, fetchStoriesIds } from '../redux/actions/storiesActions';
 import { connect } from 'react-redux';
@@ -56,9 +56,10 @@ export class StoryList extends React.Component<Props, State> {
   };
 
   renderItem = (data: any) => {
+    console.log(data.item);
     return (
       <View style={styles.listItem}>
-        <Text>{data.item.title}</Text>
+        <Text style={styles.title}>{data.item.title}</Text>
       </View>
     );
   };
@@ -135,5 +136,8 @@ const styles = StyleSheet.create({
   },
   activityIndicator: {
     padding: 10,
+  },
+  title: {
+    fontWeight: '500',
   },
 });
