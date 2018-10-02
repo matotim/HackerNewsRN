@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ActivityIndicator, FlatList, StyleSheet } from 'react-native';
+import { View, Text, ActivityIndicator, FlatList, StyleSheet, TouchableOpacity, Linking } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { connect } from 'react-redux';
 import url from 'url';
@@ -60,6 +60,12 @@ export class StoryList extends React.Component<Props, State> {
     }
   };
 
+  goToUrl(itemUrl: string) {
+    Linking.openURL(itemUrl);
+  }
+
+  keyExtractor = (item: any) => `list-item-${item.id}`;
+
   renderItem = (data: any) => {
     let urlHostname;
     if (data.item.url) {
@@ -69,28 +75,28 @@ export class StoryList extends React.Component<Props, State> {
     const date = new Date(data.item.time * 1000);
     return (
       <View style={styles.listItem}>
-        <Text style={styles.date}>{`${timeSince(date)} ago by ${data.item.by}` }</Text>
-        <Text style={styles.title}>{data.item.title}</Text>
-        {urlHostname && <Text style={styles.url}>{`(${urlHostname})`}</Text>}
+        <Text style={styles.date}>{`${timeSince(date)} ago by ${data.item.by}`}</Text>
+        <TouchableOpacity onPress={() => this.goToUrl(data.item.url)}>
+          <Text style={styles.title}>{data.item.title}</Text>
+          {urlHostname && <Text style={styles.url}>{`(${urlHostname})`}</Text>}
+        </TouchableOpacity>
         <View style={styles.bottomRow}>
-          <View style={styles.bottomItem}>
-            <FontAwesome5 name={'arrow-alt-circle-up'} size={18} style={styles.bottomIcon} brand />
+          <TouchableOpacity style={styles.bottomItem}>
+            <FontAwesome5 name={'arrow-alt-circle-up'} size={18} style={styles.bottomIcon} brand/>
             <Text style={styles.bottomText}>{data.item.score}</Text>
-          </View>
-          <View style={styles.bottomItem}>
-            <FontAwesome5 name={'comments'} size={16} style={styles.bottomIcon} brand />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.bottomItem}>
+            <FontAwesome5 name={'comments'} size={16} style={styles.bottomIcon} brand/>
             <Text style={styles.bottomText}>{data.item.kids ? data.item.kids.length : '0'}</Text>
-          </View>
-          <View style={styles.bottomItem}>
-            <FontAwesome5 name={'share-alt'} size={18} style={styles.bottomIcon} brand />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.bottomItem}>
+            <FontAwesome5 name={'share-alt'} size={18} style={styles.bottomIcon} brand/>
             <Text style={styles.bottomText}>Share</Text>
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
     );
   };
-
-  keyExtractor = (item: any) => `list-item-${item.id}`;
 
   renderFooterList = () => {
     return (
@@ -169,18 +175,18 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: '500',
     fontSize: 15,
-    marginTop: 5,
+    marginTop: 6,
   },
   url: {
     fontWeight: '500',
     fontSize: 14,
-    marginTop: 5,
-    color : '#b0afb3',
+    marginTop: 6,
+    color: '#b0afb3',
   },
   bottomRow: {
     flex: 1,
     flexDirection: 'row',
-    marginTop: 10,
+    marginTop: 14,
   },
   bottomItem: {
     flex: 1,
@@ -188,13 +194,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   bottomText: {
-    color : '#b0afb3',
+    color: '#b0afb3',
     fontWeight: '500',
     fontSize: 13,
   },
   bottomIcon: {
     marginRight: 6,
-    color : '#b0afb3',
+    color: '#b0afb3',
     fontWeight: '500',
   },
 });
