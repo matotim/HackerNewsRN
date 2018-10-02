@@ -127,7 +127,11 @@ const styles = StyleSheet.create({
   listItem: {
     backgroundColor: 'white',
     marginTop: 10,
+    marginHorizontal: 10,
     padding: 10,
+    borderRadius: 3,
+    borderWidth: 1,
+    borderColor: '#E2E2E7',
   },
   activityIndicator: {
     padding: 10,
