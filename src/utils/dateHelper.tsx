@@ -12,14 +12,20 @@ export function timeSince(date: Date) {
   interval = Math.floor(seconds / 86400);
   if (interval > 1) {
     return interval + ' days';
+  } else if (interval === 1) {
+    return interval + ' day';
   }
   interval = Math.floor(seconds / 3600);
   if (interval > 1) {
     return interval + ' hours';
+  } else if (interval === 1) {
+    return interval + ' hour';
   }
   interval = Math.floor(seconds / 60);
   if (interval > 1) {
     return interval + ' minutes';
+  } else if (interval === 1) {
+    return interval + ' minute';
   }
   return Math.floor(seconds) + ' seconds';
 }

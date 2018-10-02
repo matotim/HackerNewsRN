@@ -1,10 +1,19 @@
 import React from 'react';
-import { View, Text, ActivityIndicator, FlatList, StyleSheet, TouchableOpacity, Linking } from 'react-native';
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+  Linking,
+  Share,
+  Platform,
+} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { connect } from 'react-redux';
-import url from 'url';
 
-import { RootState, StoryCategory } from '../interfaces/stores';
+import { RootState, Story, StoryCategory } from '../utils/types';
 import { fetchStories, fetchStoriesIds } from '../redux/actions/storiesActions';
 import { timeSince } from '../utils/dateHelper';
 
@@ -12,7 +21,7 @@ interface StateProps {
   storyCategory: StoryCategory;
   isFetching: boolean;
   error: object | null;
-  stories: object[] | null;
+  stories: Story[] | null;
   ids: string[] | null;
 }
 
@@ -31,6 +40,24 @@ interface State {
 const PAGE_SIZE = 25;
 
 export class StoryList extends React.Component<Props, State> {
+
+  static goToUrl(itemUrl: string) {
+    Linking.openURL(itemUrl);
+  }
+
+  static shareUrl(item: Story) {
+    const itemUrl = item.url ? item.url : 'https://news.ycombinator.com/item?id=' + item.id;
+    let message = item.title;
+    message += Platform.OS === 'android' ? ` ${itemUrl}` : '';
+    Share.share({
+      message,
+      url: itemUrl,
+      title: 'Check out this link',
+    }, {
+      // Android only:
+      dialogTitle: 'Check out this link',
+    });
+  }
 
   constructor(props: Props) {
     super(props);
@@ -60,13 +87,10 @@ export class StoryList extends React.Component<Props, State> {
     }
   };
 
-  goToUrl(itemUrl: string) {
-    Linking.openURL(itemUrl);
-  }
-
   keyExtractor = (item: any) => `list-item-${item.id}`;
 
   renderItem = (data: any) => {
+    const url = require('url');
     let urlHostname;
     if (data.item.url) {
       urlHostname = url.parse(data.item.url).hostname;
@@ -75,8 +99,8 @@ export class StoryList extends React.Component<Props, State> {
     const date = new Date(data.item.time * 1000);
     return (
       <View style={styles.listItem}>
-        <Text style={styles.date}>{`${timeSince(date)} ago by ${data.item.by}`}</Text>
-        <TouchableOpacity onPress={() => this.goToUrl(data.item.url)}>
+          <Text style={styles.date}>{`${timeSince(date)} ago by ${data.item.by}`}</Text>
+        <TouchableOpacity onPress={() => StoryList.goToUrl(data.item.url)}>
           <Text style={styles.title}>{data.item.title}</Text>
           {urlHostname && <Text style={styles.url}>{`(${urlHostname})`}</Text>}
         </TouchableOpacity>
@@ -89,7 +113,7 @@ export class StoryList extends React.Component<Props, State> {
             <FontAwesome5 name={'comments'} size={16} style={styles.bottomIcon} brand/>
             <Text style={styles.bottomText}>{data.item.kids ? data.item.kids.length : '0'}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.bottomItem}>
+          <TouchableOpacity style={styles.bottomItem} onPress={() => StoryList.shareUrl(data.item)}>
             <FontAwesome5 name={'share-alt'} size={18} style={styles.bottomIcon} brand/>
             <Text style={styles.bottomText}>Share</Text>
           </TouchableOpacity>

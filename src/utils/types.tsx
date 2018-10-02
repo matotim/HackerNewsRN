@@ -9,7 +9,7 @@ export interface RootState {
 export interface StoriesState {
   isFetching: boolean;
   error: object | null;
-  stories: object[] | null;
+  stories: Story[] | null;
   ids: string[] | null;
 }
 
@@ -26,4 +26,15 @@ export enum StoryCategory {
   TOP_STORIES = 'topstories',
   BEST_STORIES = 'beststories',
   NEW_STORIES = 'newstories',
+}
+
+export interface Story {
+  id: number;
+  by: string;
+  kids: number[] | null;
+  score: number;
+  time: number;
+  title: string;
+  type: string;
+  url: string;
 }

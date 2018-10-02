@@ -2,7 +2,7 @@ import {
   ActionStory,
   StoriesState,
   StoryCategory,
-} from '../../interfaces/stores';
+} from '../../utils/types';
 import { storiesActionTypes } from '../actions';
 
 const initialState: StoriesState = {

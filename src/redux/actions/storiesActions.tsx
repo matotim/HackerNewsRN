@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import Config from 'react-native-config';
-import { ActionStory, StoryCategory } from '../../interfaces/stores';
+import { ActionStory, StoryCategory } from '../../utils/types';
 import * as storiesActionTypes from './storiesActions.types';
 
 export function fetchStoriesSuccess(
