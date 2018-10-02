@@ -1,5 +1,8 @@
 import React from 'react';
-import { View, Text, ActivityIndicator, FlatList, StyleSheet, Platform } from 'react-native';
+import { View, Text, ActivityIndicator, FlatList, StyleSheet } from 'react-native';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import url from 'url';
+
 import { RootState, StoryCategory } from '../interfaces/stores';
 import { fetchStories, fetchStoriesIds } from '../redux/actions/storiesActions';
 import { connect } from 'react-redux';
@@ -17,7 +20,8 @@ interface DispatchProps {
   fetchStories: (ids: string[]) => void;
 }
 
-interface Props extends StateProps, DispatchProps {}
+interface Props extends StateProps, DispatchProps {
+}
 
 interface State {
   index: number;
@@ -56,10 +60,29 @@ export class StoryList extends React.Component<Props, State> {
   };
 
   renderItem = (data: any) => {
-    console.log(data.item);
+    let urlHostname;
+    if (data.item.url) {
+      urlHostname = url.parse(data.item.url).hostname;
+      urlHostname = urlHostname.startsWith('www.') ? urlHostname.substring(4) : urlHostname;
+    }
     return (
       <View style={styles.listItem}>
         <Text style={styles.title}>{data.item.title}</Text>
+        {urlHostname && <Text style={styles.url}>{`(${urlHostname})`}</Text>}
+        <View style={styles.bottomRow}>
+          <View style={styles.bottomItem}>
+            <FontAwesome5 name={'arrow-alt-circle-up'} size={18} style={styles.bottomIcon} brand />
+            <Text style={styles.bottomText}>{data.item.score}</Text>
+          </View>
+          <View style={styles.bottomItem}>
+            <FontAwesome5 name={'comments'} size={16} style={styles.bottomIcon} brand />
+            <Text style={styles.bottomText}>{data.item.kids ? data.item.kids.length : '0'}</Text>
+          </View>
+          <View style={styles.bottomItem}>
+            <FontAwesome5 name={'share-alt'} size={18} style={styles.bottomIcon} brand />
+            <Text style={styles.bottomText}>Share</Text>
+          </View>
+        </View>
       </View>
     );
   };
@@ -90,7 +113,7 @@ export class StoryList extends React.Component<Props, State> {
 
   renderContent() {
     if (this.props.isFetching && !this.props.stories) {
-      return <ActivityIndicator size="large" style={styles.activityIndicator} />;
+      return <ActivityIndicator size="large" style={styles.activityIndicator}/>;
     } else if (this.props.stories) {
       return this.renderList();
     } else if (this.props.error) {
@@ -138,6 +161,33 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   title: {
+    fontWeight: '500',
+    fontSize: 15,
+  },
+  url: {
+    fontWeight: '500',
+    fontSize: 14,
+    marginTop: 5,
+    color : '#b0afb3',
+  },
+  bottomRow: {
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: 10,
+    justifyContent: 'space-around',
+  },
+  bottomItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  bottomText: {
+    color : '#b0afb3',
+    fontWeight: '500',
+    fontSize: 13,
+  },
+  bottomIcon: {
+    marginRight: 6,
+    color : '#b0afb3',
     fontWeight: '500',
   },
 });

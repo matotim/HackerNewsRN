@@ -7,8 +7,8 @@ export default createStackNavigator({
   Main: {
     screen: createMaterialTopTabNavigator({
       Top: TopStoriesScreen,
-      New: BestStoriesScreen,
-      Best: NewStoriesScreen,
+      Best: BestStoriesScreen,
+      New: NewStoriesScreen,
     }, {
       tabBarOptions: {
         style: {
