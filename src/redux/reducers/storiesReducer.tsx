@@ -26,7 +26,11 @@ function categoryReducer(category: StoryCategory) {
       case storiesActionTypes.FETCH_STORIES_IDS_SUCCESS:
         return { ...state, isFetching: true, ids: action.payload };
       case storiesActionTypes.FETCH_STORIES_SUCCESS:
-        return { ...state, isFetching: false, stories: action.payload };
+        return {
+          ...state,
+          isFetching: false,
+          stories: state.stories ? [...state.stories, ...action.payload] : action.payload,
+        };
       case storiesActionTypes.FETCH_STORIES_FAILURE:
         return { ...state, isFetching: false, error: action.payload };
       default:

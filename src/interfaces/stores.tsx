@@ -9,8 +9,8 @@ export interface RootState {
 export interface StoriesState {
   isFetching: boolean;
   error: object | null;
-  stories: object | null;
-  ids: object | null;
+  stories: object[] | null;
+  ids: string[] | null;
 }
 
 export interface ActionPayload<T = any> extends Action {
