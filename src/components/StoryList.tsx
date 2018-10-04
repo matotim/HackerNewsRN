@@ -19,6 +19,7 @@ import { timeSince } from '../utils/dateHelper';
 
 interface OwnProps {
   storyCategory: StoryCategory;
+  store?: any; // Necessary for test connected component
 }
 
 interface StateProps {

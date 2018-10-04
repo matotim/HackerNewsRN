@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest --coverage",
-    "test:u": "jest --coverage --updateSnapshot",
+    "test": "jest",
+    "test:u": "jest --updateSnapshot",
     "jest-html": "jest-html",
-    "lint": "tslint 'src/**/*.{ts, tsx}",
+    "lint": "tslint 'src/**/*.{ts, tsx}'",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "precommit": "lint-staged"
@@ -84,7 +84,9 @@
     ],
     "snapshotSerializers": [
       "jest-html"
-    ]
+    ],
+    "collectCoverage": true,
+    "coverageReporters": ["json", "html", "text"]
   },
   "prettier": {
     "singleQuote": true,
