@@ -80,7 +80,7 @@
       "<rootDir>"
     ],
     "setupFiles": [
-      "./tests/setup.js"
+      "./config/tests.setup.js"
     ],
     "snapshotSerializers": [
       "jest-html"
