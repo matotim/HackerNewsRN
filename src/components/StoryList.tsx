@@ -17,8 +17,11 @@ import { RootState, Story, StoryCategory } from '../utils/types';
 import { fetchStories, fetchStoriesIds } from '../redux/actions/storiesActions';
 import { timeSince } from '../utils/dateHelper';
 
-interface StateProps {
+interface OwnProps {
   storyCategory: StoryCategory;
+}
+
+interface StateProps {
   isFetching: boolean;
   error: object | null;
   stories: Story[] | null;
@@ -30,8 +33,7 @@ interface DispatchProps {
   fetchStories: (ids: string[]) => void;
 }
 
-interface Props extends StateProps, DispatchProps {
-}
+type Props = StateProps & DispatchProps & OwnProps;
 
 interface State {
   index: number;
@@ -165,15 +167,14 @@ export class StoryList extends React.Component<Props, State> {
   }
 }
 
-const mapStateToProps = (state: RootState, ownProps: StateProps): StateProps => {
+const mapStateToProps = (state: RootState, ownProps: OwnProps): StateProps => {
   const storyState = state[ownProps.storyCategory];
   return {
-    ...ownProps,
     ...storyState,
   };
 };
 
-const mapDispatchToProps = (dispatch: any, ownProps: StateProps): DispatchProps => ({
+const mapDispatchToProps = (dispatch: any, ownProps: OwnProps): DispatchProps => ({
   fetchStoriesIds: () => dispatch(fetchStoriesIds(ownProps.storyCategory)),
   fetchStories: (ids: string[]) => dispatch(fetchStories(ids, ownProps.storyCategory)),
 });
