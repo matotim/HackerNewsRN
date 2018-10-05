@@ -34,7 +34,7 @@ interface DispatchProps {
   fetchStories: (ids: string[]) => void;
 }
 
-type Props = StateProps & DispatchProps & OwnProps;
+export type Props = StateProps & DispatchProps & OwnProps;
 
 interface State {
   index: number;
@@ -104,7 +104,7 @@ export class StoryList extends React.Component<Props, State> {
       <View style={styles.listItem}>
           <Text style={styles.date}>{`${timeSince(date)} ago by ${data.item.by}`}</Text>
         <TouchableOpacity onPress={() => StoryList.goToUrl(data.item.url)}>
-          <Text style={styles.title}>{data.item.title}</Text>
+          <Text style={styles.title} testID={'item-title'}>{data.item.title}</Text>
           {urlHostname && <Text style={styles.url}>{`(${urlHostname})`}</Text>}
         </TouchableOpacity>
         <View style={styles.bottomRow}>
@@ -152,10 +152,8 @@ export class StoryList extends React.Component<Props, State> {
       return <ActivityIndicator size="large" style={styles.activityIndicator}/>;
     } else if (this.props.stories) {
       return this.renderList();
-    } else if (this.props.error) {
+    } else  {
       return <Text>Error</Text>;
-    } else {
-      return <Text>Default</Text>;
     }
   }
 
