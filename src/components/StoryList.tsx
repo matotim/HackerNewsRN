@@ -153,6 +153,7 @@ export class StoryList extends React.Component<Props, State> {
     } else if (this.props.stories) {
       return this.renderList();
     } else if (this.props.error) {
+      console.log(this.props.error);
       return <Text>Error</Text>;
     } else {
       return <Text>Default</Text>;

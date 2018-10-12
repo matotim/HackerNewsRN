@@ -1,7 +1,8 @@
 import axios, { AxiosResponse } from 'axios';
-import Config from 'react-native-config';
 import { ActionStory, StoryCategory } from '../../utils/types';
 import * as storiesActionTypes from './storiesActions.types';
+
+const API_URL = 'https://hacker-news.firebaseio.com/v0/';
 
 export function fetchStoriesSuccess(
   data: any,
@@ -42,7 +43,7 @@ export function fetchStoriesIds(
   return (dispatch) => {
     dispatch({ type: storiesActionTypes.FETCH_STORIES, category });
     return axios
-      .get(Config.API_URL + category + '.json')
+      .get(API_URL + category + '.json')
       .then(response => {
         dispatch(fetchStoriesIdsSuccess(response.data, category));
       })
@@ -59,7 +60,7 @@ export function fetchStories(
   return (dispatch) => {
     dispatch({ type: storiesActionTypes.FETCH_STORIES, category });
     return axios.all(ids.map((id: string) => {
-      return axios.get(Config.API_URL + 'item/' + id + '.json');
+      return axios.get(API_URL + 'item/' + id + '.json');
     })).then((responses: AxiosResponse[]) => {
       const stories = responses.map(r => r.data);
       dispatch(fetchStoriesSuccess(stories, category));

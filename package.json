@@ -18,7 +18,6 @@
     "idx": "^2.4.0",
     "react": "16.5.0",
     "react-native": "0.57.1",
-    "react-native-config": "^0.11.5",
     "react-native-vector-icons": "^5.0.0",
     "react-navigation": "^2.17.0",
     "react-navigation-redux-helpers": "^2.0.6",
