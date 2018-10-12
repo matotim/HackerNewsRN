@@ -1,4 +1,5 @@
-import { Platform } from 'react-native';
+import React from 'react';
+import { Platform, View } from 'react-native';
 import { createMaterialTopTabNavigator, createStackNavigator } from 'react-navigation';
 
 import { TopStoriesScreen, BestStoriesScreen, NewStoriesScreen } from '../screens';
@@ -28,6 +29,7 @@ export default createStackNavigator({
       title: 'Stories',
       headerStyle: {
         borderBottomColor: 'transparent',
+        elevation: 0,
       },
     },
   },
