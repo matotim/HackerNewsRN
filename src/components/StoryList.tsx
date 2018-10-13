@@ -200,12 +200,13 @@ const styles = StyleSheet.create({
     fontSize: 11,
   },
   title: {
-    fontWeight: '500',
+    fontWeight: Platform.OS === 'ios' ? '500' : '400',
     fontSize: 15,
     marginTop: 6,
+    color: 'black',
   },
   url: {
-    fontWeight: '500',
+    fontWeight: Platform.OS === 'ios' ? '500' : '400',
     fontSize: 14,
     marginTop: 6,
     color: '#b0afb3',
@@ -222,12 +223,12 @@ const styles = StyleSheet.create({
   },
   bottomText: {
     color: '#b0afb3',
-    fontWeight: '500',
+    fontWeight: Platform.OS === 'ios' ? '500' : '400',
     fontSize: 13,
   },
   bottomIcon: {
     marginRight: 6,
     color: '#b0afb3',
-    fontWeight: '500',
+    fontWeight: Platform.OS === 'ios' ? '500' : '400',
   },
 });

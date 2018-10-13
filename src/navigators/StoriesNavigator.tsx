@@ -15,6 +15,7 @@ export default createStackNavigator({
         style: {
           backgroundColor: 'white',
           borderTopColor: 'transparent',
+          elevation: 0,
         },
         labelStyle: {
           color: 'black',
@@ -26,10 +27,15 @@ export default createStackNavigator({
       },
     }),
     navigationOptions: {
-      title: 'Stories',
+      title: 'CleanHN',
       headerStyle: {
         borderBottomColor: 'transparent',
         elevation: 0,
+      },
+      headerTitleStyle: {
+        fontWeight: Platform.OS === 'ios' ? '500' : '400',
+        textAlign: 'center',
+        flex: 1,
       },
     },
   },
