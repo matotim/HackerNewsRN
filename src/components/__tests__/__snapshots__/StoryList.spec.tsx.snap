@@ -19,9 +19,43 @@ ShallowWrapper {
         ],
       }
     }
-    ids={null}
+    ids={
+      Array [
+        "42",
+        "84",
+      ]
+    }
     isFetching={false}
-    stories={null}
+    stories={
+      Array [
+        Object {
+          "by": "tmato",
+          "id": 42,
+          "kids": Array [
+            1,
+            2,
+          ],
+          "score": 42,
+          "time": 1538740929,
+          "title": "This is a random title",
+          "type": "story",
+          "url": "http://google.com",
+        },
+        Object {
+          "by": "matoti",
+          "id": 84,
+          "kids": Array [
+            1,
+            2,
+          ],
+          "score": 84,
+          "time": 1538740929,
+          "title": "This is a new random title",
+          "type": "story",
+          "url": "http://google.com/search",
+        },
+      ]
+    }
     storyCategory="topstories"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -37,9 +71,52 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": <Component>
-        Default
-      </Component>,
+      "children": <FlatList
+        ListFooterComponent={[Function]}
+        data={
+          Array [
+            Object {
+              "by": "tmato",
+              "id": 42,
+              "kids": Array [
+                1,
+                2,
+              ],
+              "score": 42,
+              "time": 1538740929,
+              "title": "This is a random title",
+              "type": "story",
+              "url": "http://google.com",
+            },
+            Object {
+              "by": "matoti",
+              "id": 84,
+              "kids": Array [
+                1,
+                2,
+              ],
+              "score": 84,
+              "time": 1538740929,
+              "title": "This is a new random title",
+              "type": "story",
+              "url": "http://google.com/search",
+            },
+          ]
+        }
+        disableVirtualization={false}
+        horizontal={false}
+        initialNumToRender={10}
+        keyExtractor={[Function]}
+        maxToRenderPerBatch={10}
+        numColumns={1}
+        onEndReached={[Function]}
+        onEndReachedThreshold={1}
+        refreshing={false}
+        renderItem={[Function]}
+        scrollEventThrottle={50}
+        updateCellsBatchingPeriod={50}
+        windowSize={21}
+      />,
     },
     "ref": null,
     "rendered": Object {
@@ -47,10 +124,51 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "children": "Default",
+        "ListFooterComponent": [Function],
+        "data": Array [
+          Object {
+            "by": "tmato",
+            "id": 42,
+            "kids": Array [
+              1,
+              2,
+            ],
+            "score": 42,
+            "time": 1538740929,
+            "title": "This is a random title",
+            "type": "story",
+            "url": "http://google.com",
+          },
+          Object {
+            "by": "matoti",
+            "id": 84,
+            "kids": Array [
+              1,
+              2,
+            ],
+            "score": 84,
+            "time": 1538740929,
+            "title": "This is a new random title",
+            "type": "story",
+            "url": "http://google.com/search",
+          },
+        ],
+        "disableVirtualization": false,
+        "horizontal": false,
+        "initialNumToRender": 10,
+        "keyExtractor": [Function],
+        "maxToRenderPerBatch": 10,
+        "numColumns": 1,
+        "onEndReached": [Function],
+        "onEndReachedThreshold": 1,
+        "refreshing": false,
+        "renderItem": [Function],
+        "scrollEventThrottle": 50,
+        "updateCellsBatchingPeriod": 50,
+        "windowSize": 21,
       },
       "ref": null,
-      "rendered": "Default",
+      "rendered": null,
       "type": [Function],
     },
     "type": [Function],
@@ -61,9 +179,52 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "children": <Component>
-          Default
-        </Component>,
+        "children": <FlatList
+          ListFooterComponent={[Function]}
+          data={
+            Array [
+              Object {
+                "by": "tmato",
+                "id": 42,
+                "kids": Array [
+                  1,
+                  2,
+                ],
+                "score": 42,
+                "time": 1538740929,
+                "title": "This is a random title",
+                "type": "story",
+                "url": "http://google.com",
+              },
+              Object {
+                "by": "matoti",
+                "id": 84,
+                "kids": Array [
+                  1,
+                  2,
+                ],
+                "score": 84,
+                "time": 1538740929,
+                "title": "This is a new random title",
+                "type": "story",
+                "url": "http://google.com/search",
+              },
+            ]
+          }
+          disableVirtualization={false}
+          horizontal={false}
+          initialNumToRender={10}
+          keyExtractor={[Function]}
+          maxToRenderPerBatch={10}
+          numColumns={1}
+          onEndReached={[Function]}
+          onEndReachedThreshold={1}
+          refreshing={false}
+          renderItem={[Function]}
+          scrollEventThrottle={50}
+          updateCellsBatchingPeriod={50}
+          windowSize={21}
+        />,
       },
       "ref": null,
       "rendered": Object {
@@ -71,10 +232,51 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": "Default",
+          "ListFooterComponent": [Function],
+          "data": Array [
+            Object {
+              "by": "tmato",
+              "id": 42,
+              "kids": Array [
+                1,
+                2,
+              ],
+              "score": 42,
+              "time": 1538740929,
+              "title": "This is a random title",
+              "type": "story",
+              "url": "http://google.com",
+            },
+            Object {
+              "by": "matoti",
+              "id": 84,
+              "kids": Array [
+                1,
+                2,
+              ],
+              "score": 84,
+              "time": 1538740929,
+              "title": "This is a new random title",
+              "type": "story",
+              "url": "http://google.com/search",
+            },
+          ],
+          "disableVirtualization": false,
+          "horizontal": false,
+          "initialNumToRender": 10,
+          "keyExtractor": [Function],
+          "maxToRenderPerBatch": 10,
+          "numColumns": 1,
+          "onEndReached": [Function],
+          "onEndReachedThreshold": 1,
+          "refreshing": false,
+          "renderItem": [Function],
+          "scrollEventThrottle": 50,
+          "updateCellsBatchingPeriod": 50,
+          "windowSize": 21,
         },
         "ref": null,
-        "rendered": "Default",
+        "rendered": null,
         "type": [Function],
       },
       "type": [Function],
