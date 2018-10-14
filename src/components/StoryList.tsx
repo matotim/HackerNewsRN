@@ -66,8 +66,8 @@ export class StoryList extends React.Component<Props, State> {
     };
   }
 
-  goToUrl(itemUrl: string) {
-    this.props.navigation.navigate('WebView', { url: itemUrl });
+  goToUrl(item: Story) {
+    this.props.navigation.navigate('WebView', { url: item.url, title: item.title });
   }
 
   componentDidMount() {
@@ -104,7 +104,7 @@ export class StoryList extends React.Component<Props, State> {
     return (
       <View style={styles.listItem}>
           <Text style={styles.date}>{`${timeSince(date)} ago by ${data.item.by}`}</Text>
-        <TouchableOpacity onPress={() => this.goToUrl(data.item.url)}>
+        <TouchableOpacity onPress={() => this.goToUrl(data.item)}>
           <Text style={styles.title} testID={'item-title'}>{data.item.title}</Text>
           {urlHostname && <Text style={styles.url}>{`(${urlHostname})`}</Text>}
         </TouchableOpacity>
