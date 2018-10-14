@@ -1,8 +1,9 @@
 import React from 'react';
-import { Platform, View } from 'react-native';
+import { Platform } from 'react-native';
 import { createMaterialTopTabNavigator, createStackNavigator } from 'react-navigation';
 
 import { TopStoriesScreen, BestStoriesScreen, NewStoriesScreen } from '../screens';
+import { WebViewScreen } from '../screens/WebViewScreen';
 
 export default createStackNavigator({
   Main: {
@@ -26,18 +27,19 @@ export default createStackNavigator({
         },
       },
     }),
-    navigationOptions: {
-      title: 'CleanHN',
-      headerStyle: {
-        borderBottomColor: 'transparent',
-        elevation: 0,
-      },
-      headerTitleStyle: {
-        fontWeight: Platform.OS === 'ios' ? '500' : '400',
-        textAlign: 'center',
-        flex: 1,
-      },
+  },
+  WebView: WebViewScreen,
+}, {
+  navigationOptions: {
+    title: 'CleanHN',
+    headerStyle: {
+      borderBottomColor: 'transparent',
+      elevation: 0,
+    },
+    headerTitleStyle: {
+      fontWeight: Platform.OS === 'ios' ? '600' : '500',
+      textAlign: 'center',
+      flex: 1,
     },
   },
-  // Details: DetailsScreen,
 });

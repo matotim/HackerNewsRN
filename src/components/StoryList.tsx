@@ -16,6 +16,7 @@ import { connect } from 'react-redux';
 import { RootState, Story, StoryCategory } from '../utils/types';
 import { fetchStories, fetchStoriesIds } from '../redux/actions/storiesActions';
 import { timeSince } from '../utils/dateHelper';
+import { NavigationScreenProps } from 'react-navigation';
 
 interface OwnProps {
   storyCategory: StoryCategory;
@@ -34,19 +35,15 @@ interface DispatchProps {
   fetchStories: (ids: string[]) => void;
 }
 
-export type Props = StateProps & DispatchProps & OwnProps;
+export type Props = StateProps & DispatchProps & OwnProps & NavigationScreenProps;
 
 interface State {
   index: number;
 }
 
-const PAGE_SIZE = 25;
+const PAGE_SIZE = 20;
 
 export class StoryList extends React.Component<Props, State> {
-
-  static goToUrl(itemUrl: string) {
-    Linking.openURL(itemUrl);
-  }
 
   static shareUrl(item: Story) {
     const itemUrl = item.url ? item.url : 'https://news.ycombinator.com/item?id=' + item.id;
@@ -67,6 +64,10 @@ export class StoryList extends React.Component<Props, State> {
     this.state = {
       index: 0,
     };
+  }
+
+  goToUrl(itemUrl: string) {
+    this.props.navigation.navigate('WebView', { url: itemUrl });
   }
 
   componentDidMount() {
@@ -103,7 +104,7 @@ export class StoryList extends React.Component<Props, State> {
     return (
       <View style={styles.listItem}>
           <Text style={styles.date}>{`${timeSince(date)} ago by ${data.item.by}`}</Text>
-        <TouchableOpacity onPress={() => StoryList.goToUrl(data.item.url)}>
+        <TouchableOpacity onPress={() => this.goToUrl(data.item.url)}>
           <Text style={styles.title} testID={'item-title'}>{data.item.title}</Text>
           {urlHostname && <Text style={styles.url}>{`(${urlHostname})`}</Text>}
         </TouchableOpacity>
@@ -141,7 +142,7 @@ export class StoryList extends React.Component<Props, State> {
         renderItem={this.renderItem}
         refreshing={this.props.isFetching}
         onEndReached={this.loadMoreStories}
-        onEndReachedThreshold={1}
+        onEndReachedThreshold={2}
         ListFooterComponent={this.renderFooterList}
       />
     );
