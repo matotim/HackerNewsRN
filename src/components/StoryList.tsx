@@ -6,7 +6,6 @@ import {
   FlatList,
   StyleSheet,
   TouchableOpacity,
-  Linking,
   Share,
   Platform,
 } from 'react-native';
@@ -67,7 +66,7 @@ export class StoryList extends React.Component<Props, State> {
   }
 
   goToUrl(item: Story) {
-    this.props.navigation.navigate('WebView', { url: item.url, title: item.title });
+    this.props.navigation.navigate('WebView', { story: item });
   }
 
   componentDidMount() {

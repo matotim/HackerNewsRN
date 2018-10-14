@@ -41,5 +41,7 @@ export default createStackNavigator({
       textAlign: 'center',
       flex: 1,
     },
+    headerBackTitle: null,
+    headerTintColor: 'black',
   },
 });
