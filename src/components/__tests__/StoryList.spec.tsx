@@ -28,7 +28,10 @@ const stories: Story[] = [
   },
 ];
 const ids: string[] = ['42', '84'];
-const defaultProps = {
+const navigation: any = {
+  navigate: jest.fn(),
+};
+const defaultProps: any = {
   isFetching: false,
   error: null,
   stories,
@@ -36,6 +39,7 @@ const defaultProps = {
   fetchStoriesIds: jest.fn(),
   fetchStories: jest.fn(),
   storyCategory: StoryCategory.TOP_STORIES,
+  navigation,
 };
 Linking.openURL = jest.fn();
 Share.share = jest.fn();
@@ -57,12 +61,13 @@ describe('StoryList', () => {
     wrapper = shallow(
       <StoryList
         isFetching={false}
-        error={{ message: 'error'}}
+        error={{message: 'error'}}
         stories={null}
         ids={null}
         fetchStoriesIds={jest.fn()}
         fetchStories={jest.fn()}
         storyCategory={StoryCategory.TOP_STORIES}
+        navigation={navigation}
       />,
     );
     expect(wrapper.contains(<Text>Error</Text>)).toEqual(true);
@@ -77,15 +82,16 @@ describe('StoryList', () => {
         fetchStoriesIds={defaultProps.fetchStoriesIds}
         fetchStories={defaultProps.fetchStories}
         storyCategory={StoryCategory.TOP_STORIES}
+        navigation={navigation}
       />,
     );
     expect(defaultProps.fetchStoriesIds).toHaveBeenCalled();
-    wrapper.setProps({ ids });
+    wrapper.setProps({ids});
     wrapper.update();
     expect(defaultProps.fetchStories).toHaveBeenCalled();
     expect(wrapper.find(ActivityIndicator)).toHaveLength(1);
     expect(wrapper.find(FlatList)).toHaveLength(0);
-    wrapper.setProps({ stories });
+    wrapper.setProps({stories});
     wrapper.update();
     expect(wrapper.find(FlatList)).toHaveLength(1);
   });
@@ -99,14 +105,15 @@ describe('StoryList', () => {
         fetchStoriesIds={defaultProps.fetchStoriesIds}
         fetchStories={defaultProps.fetchStories}
         storyCategory={StoryCategory.TOP_STORIES}
+        navigation={navigation}
       />,
     );
     expect(defaultProps.fetchStoriesIds).toHaveBeenCalled();
-    wrapper.setProps({ ids });
+    wrapper.setProps({ids});
     wrapper.update();
     expect(defaultProps.fetchStories).toHaveBeenCalled();
     expect(wrapper.find(FlatList)).toHaveLength(0);
-    wrapper.setProps({ stories });
+    wrapper.setProps({stories});
     wrapper.update();
     expect(wrapper.find(FlatList)).toHaveLength(1);
   });
@@ -115,7 +122,7 @@ describe('StoryList', () => {
       <StoryList {...defaultProps} />,
     );
     const component = wrapper.instance() as StoryList;
-    expect(component.renderItem({ item: stories[0] })).toBeDefined();
+    expect(component.renderItem({item: stories[0]})).toBeDefined();
   });
   it('loadsMoreStories', () => {
     wrapper = shallow(
@@ -125,9 +132,13 @@ describe('StoryList', () => {
     component.loadMoreStories();
     expect(defaultProps.fetchStories).toHaveBeenCalled();
   });
-  it('openUrl', () => {
-    StoryList.goToUrl('google.com');
-    expect(Linking.openURL).toHaveBeenCalled();
+  it('go to WebView', () => {
+    wrapper = shallow(
+      <StoryList {...defaultProps} />,
+    );
+    const component = wrapper.instance() as StoryList;
+    component.goToUrl(stories[0]);
+    expect(navigation.navigate).toHaveBeenCalled();
   });
   it('shareUrl', () => {
     StoryList.shareUrl(stories[0]);

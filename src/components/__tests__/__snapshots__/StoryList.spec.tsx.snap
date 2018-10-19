@@ -26,6 +26,11 @@ ShallowWrapper {
       ]
     }
     isFetching={false}
+    navigation={
+      Object {
+        "navigate": [MockFunction],
+      }
+    }
     stories={
       Array [
         Object {
@@ -36,7 +41,7 @@ ShallowWrapper {
             2,
           ],
           "score": 42,
-          "time": 1538740929,
+          "time": 1539934494,
           "title": "This is a random title",
           "type": "story",
           "url": "http://google.com",
@@ -49,7 +54,7 @@ ShallowWrapper {
             2,
           ],
           "score": 84,
-          "time": 1538740929,
+          "time": 1539934494,
           "title": "This is a new random title",
           "type": "story",
           "url": "http://google.com/search",
@@ -83,7 +88,7 @@ ShallowWrapper {
                 2,
               ],
               "score": 42,
-              "time": 1538740929,
+              "time": 1539934494,
               "title": "This is a random title",
               "type": "story",
               "url": "http://google.com",
@@ -96,7 +101,7 @@ ShallowWrapper {
                 2,
               ],
               "score": 84,
-              "time": 1538740929,
+              "time": 1539934494,
               "title": "This is a new random title",
               "type": "story",
               "url": "http://google.com/search",
@@ -110,7 +115,7 @@ ShallowWrapper {
         maxToRenderPerBatch={10}
         numColumns={1}
         onEndReached={[Function]}
-        onEndReachedThreshold={1}
+        onEndReachedThreshold={2}
         refreshing={false}
         renderItem={[Function]}
         scrollEventThrottle={50}
@@ -134,7 +139,7 @@ ShallowWrapper {
               2,
             ],
             "score": 42,
-            "time": 1538740929,
+            "time": 1539934494,
             "title": "This is a random title",
             "type": "story",
             "url": "http://google.com",
@@ -147,7 +152,7 @@ ShallowWrapper {
               2,
             ],
             "score": 84,
-            "time": 1538740929,
+            "time": 1539934494,
             "title": "This is a new random title",
             "type": "story",
             "url": "http://google.com/search",
@@ -160,7 +165,7 @@ ShallowWrapper {
         "maxToRenderPerBatch": 10,
         "numColumns": 1,
         "onEndReached": [Function],
-        "onEndReachedThreshold": 1,
+        "onEndReachedThreshold": 2,
         "refreshing": false,
         "renderItem": [Function],
         "scrollEventThrottle": 50,
@@ -191,7 +196,7 @@ ShallowWrapper {
                   2,
                 ],
                 "score": 42,
-                "time": 1538740929,
+                "time": 1539934494,
                 "title": "This is a random title",
                 "type": "story",
                 "url": "http://google.com",
@@ -204,7 +209,7 @@ ShallowWrapper {
                   2,
                 ],
                 "score": 84,
-                "time": 1538740929,
+                "time": 1539934494,
                 "title": "This is a new random title",
                 "type": "story",
                 "url": "http://google.com/search",
@@ -218,7 +223,7 @@ ShallowWrapper {
           maxToRenderPerBatch={10}
           numColumns={1}
           onEndReached={[Function]}
-          onEndReachedThreshold={1}
+          onEndReachedThreshold={2}
           refreshing={false}
           renderItem={[Function]}
           scrollEventThrottle={50}
@@ -242,7 +247,7 @@ ShallowWrapper {
                 2,
               ],
               "score": 42,
-              "time": 1538740929,
+              "time": 1539934494,
               "title": "This is a random title",
               "type": "story",
               "url": "http://google.com",
@@ -255,7 +260,7 @@ ShallowWrapper {
                 2,
               ],
               "score": 84,
-              "time": 1538740929,
+              "time": 1539934494,
               "title": "This is a new random title",
               "type": "story",
               "url": "http://google.com/search",
@@ -268,7 +273,7 @@ ShallowWrapper {
           "maxToRenderPerBatch": 10,
           "numColumns": 1,
           "onEndReached": [Function],
-          "onEndReachedThreshold": 1,
+          "onEndReachedThreshold": 2,
           "refreshing": false,
           "renderItem": [Function],
           "scrollEventThrottle": 50,
