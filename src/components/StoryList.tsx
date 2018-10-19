@@ -45,9 +45,9 @@ const PAGE_SIZE = 20;
 export class StoryList extends React.Component<Props, State> {
 
   static shareUrl(item: Story) {
-    const itemUrl = item.url ? item.url : 'https://news.ycombinator.com/item?id=' + item.id;
-    let message = item.title;
-    message += Platform.OS === 'android' ? ` ${itemUrl}` : '';
+    const itemUrl = item.url ?
+      item.url : 'https://news.ycombinator.com/item?id=' + item.id;
+    const message = `${item.title} ${Platform.OS === 'android' ? itemUrl : ''}`;
     Share.share({
       message,
       url: itemUrl,
@@ -58,15 +58,12 @@ export class StoryList extends React.Component<Props, State> {
     });
   }
 
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      index: 0,
-    };
-  }
+  state = {
+    index: 0,
+  };
 
   goToUrl(item: Story) {
-    this.props.navigation.navigate('WebView', { story: item });
+    this.props.navigation.navigate('WebView', {story: item});
   }
 
   componentDidMount() {
@@ -79,7 +76,7 @@ export class StoryList extends React.Component<Props, State> {
       this.props.fetchStories(ids);
     }
     if (this.props.stories && prevProps.stories !== this.props.stories) {
-      this.setState({ index: this.props.stories.length });
+      this.setState({index: this.props.stories.length});
     }
   }
 
@@ -102,7 +99,7 @@ export class StoryList extends React.Component<Props, State> {
     const date = new Date(data.item.time * 1000);
     return (
       <View style={styles.listItem}>
-          <Text style={styles.date}>{`${timeSince(date)} ago by ${data.item.by}`}</Text>
+        <Text style={styles.date}>{`${timeSince(date)} ago by ${data.item.by}`}</Text>
         <TouchableOpacity onPress={() => this.goToUrl(data.item)}>
           <Text style={styles.title} testID={'item-title'}>{data.item.title}</Text>
           {urlHostname && <Text style={styles.url}>{`(${urlHostname})`}</Text>}
@@ -152,7 +149,7 @@ export class StoryList extends React.Component<Props, State> {
       return <ActivityIndicator size="large" style={styles.activityIndicator}/>;
     } else if (this.props.stories) {
       return this.renderList();
-    } else  {
+    } else {
       return <Text>Error</Text>;
     }
   }
